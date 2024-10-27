@@ -1,0 +1,66 @@
+﻿@page
+@model CandidateManagementWebsiteJson.Pages.CandidateProfilePage.EditModel
+
+@{
+	ViewData["Title"] = "Edit";
+	String RoleID = HttpContext.Session.GetString("RoleID");
+	if (!RoleID.Equals("1"))
+	{
+		Response.Redirect("/NotPermission");
+	}
+}
+
+<h1>Edit</h1>
+
+<h4>CandidateProfile</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="CandidateProfile.CandidateId" />
+			<div class="form-floating mb-3">
+				<input asp-for="CandidateProfile.CandidateId" readonly class="form-control" placeholder="CandidateId" id="candidateId" />
+				<label asp-for="CandidateProfile.CandidateId" class="control-label" for="candidateId"></label>
+				<span asp-validation-for="CandidateProfile.CandidateId" class="text-danger"></span>
+			</div>
+			<div class="form-floating mb-3">
+				<input asp-for="CandidateProfile.Fullname" class="form-control" placeholder="Fullname" id="fullname" />
+				<label asp-for="CandidateProfile.Fullname" class="control-label" for="fullname"></label>
+				<span asp-validation-for="CandidateProfile.Fullname" class="text-danger"></span>
+			</div>
+			<div class="form-floating mb-3">
+				<input asp-for="CandidateProfile.Birthday" class="form-control" placeholder="Birthday" id="birthday" />
+				<label asp-for="CandidateProfile.Birthday" class="control-label" for="birthday"></label>
+				<span asp-validation-for="CandidateProfile.Birthday" class="text-danger"></span>
+			</div>
+			<div class="form-floating mb-3">
+				<input asp-for="CandidateProfile.ProfileShortDescription" class="form-control" placeholder="ProfileShortDescription" id="profileShortDescription" />
+				<label asp-for="CandidateProfile.ProfileShortDescription" class="control-label" for="profileShortDescription"></label>
+				<span asp-validation-for="CandidateProfile.ProfileShortDescription" class="text-danger"></span>
+			</div>
+			<div class="form-floating mb-3">
+				<input asp-for="CandidateProfile.ProfileUrl" class="form-control" placeholder="ProfileUrl" id="profileUrl" />
+				<label asp-for="CandidateProfile.ProfileUrl" class="control-label" for="profileUrl"></label>
+				<span asp-validation-for="CandidateProfile.ProfileUrl" class="text-danger"></span>
+			</div>
+			<div class="form-floating mb-3">
+				<select asp-for="CandidateProfile.PostingId" class="form-select" id="postingId" asp-items="ViewBag.PostingId"></select>
+				<label asp-for="CandidateProfile.PostingId" for="postingId"></label>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-page="./Index" class="btn btn-outline-primary">Back to List <i class="bi bi-arrow-return-left"></i></a>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}

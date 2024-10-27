@@ -1,0 +1,29 @@
+﻿@page
+@model CandidateManagementWebsiteJson.Pages.LoginPageModel
+@{
+}
+<html lang="en">
+<head>
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="~/css/LoginPage.css">
+</head>
+<body>
+	<div class="login">
+		<div class="wrapper">
+			<form method="post">
+				<h1>Login</h1>
+				<div class="input-box">
+					<input type="text" placeholder="Email" name="txtEmail" required>
+					<i class='bx bxs-user'></i>
+				</div>
+				<div class="input-box">
+					<input type="password" placeholder="Password" name="txtPassword" required>
+					<i class='bx bxs-lock-alt'></i>
+				</div>
+				<button type="submit" class="btn btn-login" name="btnLogin">Login</button>
+				<button type="reset" class="btn">Cancel</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
